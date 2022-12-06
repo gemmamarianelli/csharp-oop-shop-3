@@ -12,11 +12,13 @@ namespace csharp_oop_shop_3
         private double pH;
         private string sorgente;
         private double maxCapienza;
+        private double galloni = 3.785;
 
         // COSTRUTTORE
 
         public Acqua(string nome, string descrizione, int prezzo, int iva, double litri, double pH, string sorgente) : base(nome, descrizione, prezzo, iva)
         {
+            
             this.litri = litri;
             this.pH = Math.Round(pH,2);
             this.sorgente = sorgente;
@@ -61,12 +63,12 @@ namespace csharp_oop_shop_3
                 this.litri = this.litri - litriDaBere;
                 if(this.litri == 0)
                 {
-                    Console.WriteLine("Hai finito l'acqua.");
+                   throw new Exception ("Hai finito l'acqua.");
                 }
                
             } else
             {
-                Console.WriteLine("Non puoi bere acqua che non c'è.");
+                throw new Exception("Non puoi bere acqua che non c'è.");
             }
             
             return this.litri;
@@ -90,17 +92,34 @@ namespace csharp_oop_shop_3
             this.litri = 0;
         }
 
-        public  void Stampa()
+        public  override void Stampa()
         {
             base.Stampa();
-            Console.WriteLine();
+            
             Console.WriteLine("Dati acqua:");
-            Console.WriteLine();
+            Console.WriteLine("Nome: " + GetNome());
             Console.WriteLine("Litri: " + GetLitri());
             Console.WriteLine("pH: " + GetPH());
             Console.WriteLine("Sorgente: " + GetSorgente());
-            Console.WriteLine();
+            Console.WriteLine("Galloni: " + convertiInGalloni);
 
         }
+        public void phNonValido(int pH)
+        {
+            if (pH> 10)
+            {
+                 Console.WriteLine("PH non valido");
+            }else if (pH < 0)
+            {
+                Console.WriteLine("PH non valido");
+            }
+            
+        }
+        public void convertiInGalloni(double litri)
+        {
+            double calcolo = litri / galloni;
+            
+        }
+        
     }
 }

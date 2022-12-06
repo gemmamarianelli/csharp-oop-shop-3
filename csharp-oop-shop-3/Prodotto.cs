@@ -67,7 +67,7 @@ namespace csharp_oop_shop_3
             return codiceRandom;
         }
         //METODO
-        public void Stampa()
+        public virtual  void Stampa()
         {
             Console.WriteLine("-------" + "PRODOTTO" + "-------");
             Console.WriteLine("codice: " + codice);
